@@ -3,7 +3,7 @@ package com.example.softwareengineeringbackend.service;
 import com.example.softwareengineeringbackend.dao.UserDao;
 import com.example.softwareengineeringbackend.domain.User;
 import com.example.softwareengineeringbackend.domain.exception.UserAlreadyExistsException;
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import com.example.softwareengineeringbackend.model.UserResourceBuilder;
 import com.example.softwareengineeringbackend.rest.resources.UserResource;
 import org.junit.jupiter.api.Assertions;
@@ -53,11 +53,11 @@ public class RegisterServiceTest {
     void responseStatusOkWhenUserRegistered() {
         when(userDao.findUserByEmail(anyString())).thenReturn(null);
 
-        UserResponse userResponse = registerService.register(userResource);
+        Response response = registerService.register(userResource);
 
-        Assertions.assertNotNull(userResponse);
-        Assertions.assertEquals(200, userResponse.getStatus());
-        Assertions.assertEquals("/register", userResponse.getPath());
+        Assertions.assertNotNull(response);
+        Assertions.assertEquals(200, response.getStatus());
+        Assertions.assertEquals("/register", response.getPath());
 
     }
 }

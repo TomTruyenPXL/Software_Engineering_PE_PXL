@@ -1,7 +1,7 @@
 package com.example.softwareengineeringbackend.rest.handler;
 
 import com.example.softwareengineeringbackend.domain.builder.UserResponseBuilder;
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -14,7 +14,7 @@ import java.util.Objects;
 public class JpaExceptionHandler {
     @ExceptionHandler(value = BindException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
-    public UserResponse jpaValidException(BindException e) {
+    public Response jpaValidException(BindException e) {
         String error = "";
 
         if(e.hasErrors()) {

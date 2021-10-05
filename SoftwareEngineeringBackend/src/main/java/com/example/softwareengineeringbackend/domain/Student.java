@@ -17,6 +17,15 @@ public class Student {
         // JPA Only
     }
 
+    public Student(String guid, int number, String gender, String givenName, String surname, String emailAddress) {
+        this.guid = guid;
+        this.number = number;
+        this.gender = gender;
+        this.givenName = givenName;
+        this.surname = surname;
+        this.emailAddress = emailAddress;
+    }
+
     public String getGuid() {
         return guid;
     }

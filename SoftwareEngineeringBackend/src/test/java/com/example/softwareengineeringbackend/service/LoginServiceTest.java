@@ -3,7 +3,7 @@ package com.example.softwareengineeringbackend.service;
 import com.example.softwareengineeringbackend.dao.UserDao;
 import com.example.softwareengineeringbackend.domain.User;
 import com.example.softwareengineeringbackend.domain.exception.UserNotFoundException;
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import com.example.softwareengineeringbackend.jwt.JwtService;
 import com.example.softwareengineeringbackend.model.UserResourceBuilder;
 import com.example.softwareengineeringbackend.rest.resources.UserResource;
@@ -13,8 +13,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Random;
 
 import static org.mockito.ArgumentMatchers.*;
 import static org.mockito.Mockito.when;
@@ -56,11 +54,11 @@ public class LoginServiceTest {
         when(userDao.findUserByEmailAndPassword(anyString(), anyString())).thenReturn(foundUser);
         when(jwtService.generateToken(anyLong(), anyString(), isNull())).thenReturn("eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRvbS50cnV5ZW5AZ21haWwuY29tIiwiaWQiOjEsImV4cGlyYXRpb24iOjE2MjI3MjAzNTAxNTIsImF1dGhEYXRlIjoxNjIyNjMzOTUwMTUyfQ.gREAqVQUYj8EnGqeL7e5j7OjQ7UD-3J3w3qXijUNl3w");
 
-        UserResponse userResponse = loginService.login(userResource);
+        Response response = loginService.login(userResource);
 
-        Assertions.assertNotNull(userResponse);
-        Assertions.assertNotNull(userResponse.getToken());
-        Assertions.assertEquals(200, userResponse.getStatus());
-        Assertions.assertEquals("/login", userResponse.getPath());
+        Assertions.assertNotNull(response);
+        Assertions.assertNotNull(response.getToken());
+        Assertions.assertEquals(200, response.getStatus());
+        Assertions.assertEquals("/login", response.getPath());
     }
 }

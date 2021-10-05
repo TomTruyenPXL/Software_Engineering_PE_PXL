@@ -4,7 +4,7 @@ import com.example.softwareengineeringbackend.dao.UserDao;
 import com.example.softwareengineeringbackend.domain.User;
 import com.example.softwareengineeringbackend.domain.builder.UserResponseBuilder;
 import com.example.softwareengineeringbackend.domain.exception.UserNotFoundException;
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import com.example.softwareengineeringbackend.jwt.JwtService;
 import com.example.softwareengineeringbackend.rest.resources.UserResource;
 import com.example.softwareengineeringbackend.utils.Utils;
@@ -21,7 +21,7 @@ public class LoginService {
         this.userDao = userDao;
     }
 
-    public UserResponse login(UserResource userResource) {
+    public Response login(UserResource userResource) {
         String password = Utils.hashPassword(userResource.getPassword());
 
         User user = userDao.findUserByEmailAndPassword(userResource.getEmail(), password);

@@ -1,6 +1,6 @@
 package com.example.softwareengineeringbackend.rest;
 
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import com.example.softwareengineeringbackend.rest.resources.UserResource;
 import com.example.softwareengineeringbackend.service.LoginService;
 import org.springframework.http.HttpStatus;
@@ -23,8 +23,8 @@ public class LoginController {
     }
 
     @PostMapping
-    public ResponseEntity<UserResponse> login(@RequestBody @Valid UserResource user) {
-        UserResponse response = loginService.login(user);
+    public ResponseEntity<Response> login(@RequestBody @Valid UserResource user) {
+        Response response = loginService.login(user);
 
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }

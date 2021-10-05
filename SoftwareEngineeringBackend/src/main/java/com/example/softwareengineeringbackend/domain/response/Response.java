@@ -2,7 +2,7 @@ package com.example.softwareengineeringbackend.domain.response;
 
 import java.time.LocalDateTime;
 
-public class UserResponse {
+public class Response {
     private String path;
     private String message;
     private String token;
@@ -10,9 +10,9 @@ public class UserResponse {
     private int status;
     private LocalDateTime time;
 
-    public UserResponse() {
+    public Response() {
         this.message = "";
-        this.success = false;
+        this.success = true;
         this.time = LocalDateTime.now();
     }
 
@@ -20,47 +20,54 @@ public class UserResponse {
         return path;
     }
 
-    public void setPath(String path) {
+    public Response setPath(String path) {
         this.path = path;
+        return this;
     }
 
     public String getMessage() {
         return message;
     }
 
-    public void setMessage(String message) {
+    public Response setMessage(String message) {
         this.message = message;
+        return this;
     }
 
     public String getToken() {
         return token;
     }
 
-    public void setToken(String token) {
+    public Response setToken(String token) {
         this.token = token;
+        return this;
     }
 
     public boolean isSuccess() {
         return success;
     }
 
-    public void setSuccess(boolean success) {
+    public Response setSuccess(boolean success) {
         this.success = success;
+        return this;
     }
 
     public int getStatus() {
         return status;
     }
 
-    public void setStatus(int status) {
+    public Response setStatus(int status) {
         this.status = status;
+        return this;
     }
 
     public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public Response setTime(LocalDateTime time) {
         this.time = time;
+        return this;
     }
+
 }

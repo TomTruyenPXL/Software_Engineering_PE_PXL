@@ -1,6 +1,6 @@
 package com.example.softwareengineeringbackend.rest;
 
-import com.example.softwareengineeringbackend.domain.response.UserResponse;
+import com.example.softwareengineeringbackend.domain.response.Response;
 import com.example.softwareengineeringbackend.rest.resources.UserResource;
 import com.example.softwareengineeringbackend.service.RegisterService;
 import org.springframework.http.HttpStatus;
@@ -21,8 +21,8 @@ public class RegisterController {
     public RegisterController(RegisterService registerService) { this.registerService = registerService; }
 
     @PostMapping
-    public ResponseEntity<UserResponse> register(@RequestBody @Valid UserResource user) {
-        UserResponse response = registerService.register(user);
+    public ResponseEntity<Response> register(@RequestBody @Valid UserResource user) {
+        Response response = registerService.register(user);
 
         return new ResponseEntity<>(response, HttpStatus.valueOf(response.getStatus()));
     }
