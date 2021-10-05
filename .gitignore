@@ -2,3 +2,4 @@
 .mvn/
 .vscode/
 node_modules/
+software_engineering_frontend/package-lock.json
