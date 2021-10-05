@@ -26,6 +26,6 @@ public class CsvService {
             return new Response().setStatus(400).setMessage("Failed to store CSV");
         }
 
-        return new Response().setStatus(200);
+        return new Response().setStatus(200).setSuccess(true);
     }
 }
