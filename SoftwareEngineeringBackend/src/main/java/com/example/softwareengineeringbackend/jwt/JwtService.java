@@ -10,6 +10,7 @@ import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 @Service
@@ -29,12 +30,13 @@ public class JwtService {
 
         JwtBuilder builder = Jwts.builder().setId(String.valueOf(id)).setIssuedAt(now).setSubject(email).setIssuer(email).signWith(signatureAlgorithm, signingKey);
         if (claims == null) {
-            builder.setClaims(Map.of(
-                    "id", id,
-                    "email", email,
-                    "expiration", new Date(nowMillis + EXPIRATION_IN_MILLIS),
-                    "authDate", new Date(nowMillis)
-            ));
+            builder.setClaims(new HashMap<String, Object>() {
+                {
+                    put("id", id);
+                    put("email", email);
+                    put("expiration", new Date(nowMillis + EXPIRATION_IN_MILLIS));
+                    put("authDate", new Date(nowMillis));
+                }});
         } else {
             claims.put("expiration", new Date(nowMillis + EXPIRATION_IN_MILLIS));
             builder.setClaims(claims);
