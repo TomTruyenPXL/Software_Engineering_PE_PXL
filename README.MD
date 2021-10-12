@@ -11,7 +11,8 @@
 - CSV Upload (POST /csv/upload)
 ### Todo (Backend)
 
-Add userRoles: Student & Teacher
+- CSV Upload testen schrijven
+- Add userRoles: Student & Teacher
 
 #### As Teacher
 - Select min/max group size
